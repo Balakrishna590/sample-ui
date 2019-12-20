@@ -1,0 +1,39 @@
+input {
+    width: 100%;
+    height: 40px;
+}
+
+input[type=text]:focus {
+    border: 3px solid rgb(9, 138, 224);
+    padding: 10px;
+  }
+
+input[type=text]:valid {
+  padding: 10px;
+ }
+  
+.reg-shadow {
+    padding: 10px;
+    box-shadow: 2px 8px 8px 2px #888888;
+    padding-bottom: 20px;
+}
+
+label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size:20px;
+    font-weight: 500
+}
+
+button{
+    padding:12px;
+    border-radius: 3px;
+    margin: .25rem .5rem .25rem 0;
+    width: 90%
+}
+
+@media only screen and (max-width:576px) {
+  /* For mobile phones: */
+  button {
+    width:91%;
+  }
+}
