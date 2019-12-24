@@ -1,14 +1,13 @@
 /* --- Angular Imports --- */
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ResponseContentType } from '@angular/http';
-
 /* --- Other Vendor Imports --- */
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 //import { SessionStorageService } from 'ng2-webstorage';
-
 import { LoaderService } from '../loader-service/loader.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +34,7 @@ export class ApiService {
 
     obj.headers = new HttpHeaders();
 
-    obj.headers = obj.headers.set('Access-Control-Allow-Origin', '*; *');
+    obj.headers = obj.headers.set('Access-Control-Allow-Origin', '*:*');
 
     obj.headers = obj.headers.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
 
@@ -111,7 +110,7 @@ export class ApiService {
       return false;
 
     }
-
+    
     return true;
 
   }
@@ -127,14 +126,24 @@ export class ApiService {
 
   public getData(url: string = ''): Observable<any> {
     let options = this.getRequestOptions(this,null);
-    console.log(options);
-    console.log(url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+      })
+    }; 
     this.loaderService.show();
-    return this.http.get(url, options).pipe(map((response: any) => {
+    return this.http.get(url, options).pipe(map(response => {
       this.loaderService.hide();
-      console.log(response)
+      console.log(response);
       return response;
     }));
+    
+    /* let options = this.getRequestOptions(this,null);
+    return this.http.get(url,options).subscribe(responseData => {
+      console.log(responseData)
+      return responseData;
+    }); */ 
   }
 
 }
