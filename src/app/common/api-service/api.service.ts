@@ -100,17 +100,11 @@ export class ApiService {
    *
    */
   private isJson(str: string): boolean {
-
     try {
-
       JSON.parse(str);
-
     } catch (e) {
-
       return false;
-
     }
-    
     return true;
 
   }
@@ -118,32 +112,40 @@ export class ApiService {
   public deleteData(url: string = '', body: any = {}): Observable<any> {
     let options = this.getRequestOptions(this, body);
     this.loaderService.show();
-    return this.http.delete(url, options).pipe(map((response: any) => {
-      this.loaderService.hide();
-      return response;
-    }));
+    return this.http.delete(url, options)
+      .pipe(
+        map(
+          (response: any) => {
+            this.loaderService.hide();
+            return response;
+          }
+        )
+      );
   }
 
   public getData(url: string = ''): Observable<any> {
-    let options = this.getRequestOptions(this,null);
+    let options = this.getRequestOptions(this, null);
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       })
-    }; 
+    };
     this.loaderService.show();
-    return this.http.get(url, options).pipe(map(response => {
-      this.loaderService.hide();
-      console.log(response);
-      return response;
-    }));
-    
-    /* let options = this.getRequestOptions(this,null);
-    return this.http.get(url,options).subscribe(responseData => {
-      console.log(responseData)
-      return responseData;
-    }); */ 
+    return this.http.get(url, options)
+      .pipe(
+        map(
+          (response: any) => {
+            this.loaderService.hide();
+            console.log(response);
+            return response;
+          }
+        )
+      );
   }
-
 }
+/* let options = this.getRequestOptions(this,null);
+return this.http.get(url,options).subscribe(responseData => {
+  console.log(responseData)
+  return responseData;
+}); */
