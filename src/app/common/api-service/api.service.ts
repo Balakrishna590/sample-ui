@@ -132,7 +132,7 @@ export class ApiService {
       })
     };
     this.loaderService.show();
-    return this.http.get(url, options)
+    return this.http.get(url, httpOptions)
       .pipe(
         map(
           (response: any) => {
@@ -141,8 +141,13 @@ export class ApiService {
             return response;
           }
         )
-      );
+      )
   }
+  /* mapToResponse(): Observable<any> {
+    this.getData.pipe(
+      map((response: any) => response.map(object => client.object))
+    )
+  } */
 }
 /* let options = this.getRequestOptions(this,null);
 return this.http.get(url,options).subscribe(responseData => {

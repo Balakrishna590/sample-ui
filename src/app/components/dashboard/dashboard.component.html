@@ -1,2 +1,16 @@
 <p>dashboard works!</p>
 <button (click)=getAllDepartments()>Test</button>
+<table class="table-bordered" *ngIf="!isHidden">
+    <thead>
+        <th>Department Number</th>
+        <th>Department Name</th>
+        <th>Department Location</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dept of departments">
+            <td>{{dept.deptNo}}</td>
+            <td>{{dept.dname}}</td>
+            <td>{{dept.location}}</td>
+        </tr>
+    </tbody>
+</table>

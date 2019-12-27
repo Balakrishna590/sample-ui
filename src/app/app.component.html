@@ -3,3 +3,8 @@
   <a routerLink="/registration"></a>
 </nav>
 <router-outlet></router-outlet>
+
+<!-- Loader Mask -->
+<div class="load-mask" [ngStyle]="{ 'display': displayLoader ? 'block' : 'none' }">
+  <span class="spinner"></span>
+</div>

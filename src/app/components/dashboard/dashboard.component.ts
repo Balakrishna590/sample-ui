@@ -10,15 +10,20 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
 
-  public departments : any;
+  public departments: any;
+  public isHidden :boolean = true;
   constructor(private adminEmp: AdminEmployeeService) { }
 
   ngOnInit() {
   }
 
-  public getAllDepartments(): Observable<any> {
-    this.departments = this.adminEmp.getAllDepartments();
-    console.log(this.departments);
-     return this.departments;
+  public getAllDepartments(): void {
+    this.departments = this.adminEmp.getAllDepartments()
+      .subscribe(departments => {
+        this.isHidden = false;
+        this.departments = departments;
+        console.log(this.departments);
+      } 
+    )
   }
 }
