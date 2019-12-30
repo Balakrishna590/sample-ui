@@ -1,0 +1,32 @@
+
+
+.bg {
+    background: url('../../../assets/images/Login-BG-Image.jpg');
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: auto; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+button{
+    padding:12px;
+    border-radius: 3px;
+    margin: .25rem .5rem .25rem 0;
+    margin-top: 20px;;
+    width: 100%
+}
+
+.login-shadow {
+    //margin-top: -webkit-calc(100% - 80px);
+    //margin-bottom: calc(100% - 10%);
+    padding: 10px;
+    box-shadow: 2px 8px 8px 2px #888888;
+    padding-bottom: 20px;
+}

@@ -23,6 +23,7 @@ export const CONFIGURATION: Configuration = {
        yearlabel:'Year',
        regbtnlabel:'Register'
       },
+      loginlabel: 'Login',
       about: 'About',
       skip: 'Skip',
     }
